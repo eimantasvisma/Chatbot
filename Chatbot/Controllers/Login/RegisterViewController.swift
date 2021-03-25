@@ -20,6 +20,8 @@ class RegisterViewController: UIViewController, Storyboarded {
     // MARK: - Enums
     private enum Texts {
         static let title = "Register"
+        static let dismiss = "Dismiss"
+        static let userExists = "User with the same email already exists"
     }
     
     // MARK: - Vars
@@ -36,35 +38,48 @@ class RegisterViewController: UIViewController, Storyboarded {
     private func setupView() {
         view.backgroundColor = .white
         title = Texts.title
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailAddressTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private func registerNewAccount() {
         guard
             let name = firstNameTextField.text,
             let surname = lastNameTextField.text,
-            let emai = emailAddressTextField.text,
+            let email = emailAddressTextField.text,
             let pass = passwordTextField.text
         else { return }
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: emai, password: pass) { [weak self] authResult, error in
+        DatabaseManager.shared.isUserExists(with: email) { [weak self] exists in
             guard let strongSelf = self else { return }
             
-            guard error == nil else {
-                print("Error while creating user: \(String(describing: error?.localizedDescription))")
+            guard !exists else {
+                strongSelf.showAlert(message: Texts.userExists)
                 return
             }
- 
-            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            changeRequest?.displayName = "\(name) \(surname)"
-            changeRequest?.commitChanges { error in
+            
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: pass) { authResult, error in
                 guard error == nil else {
-                    print("Error while updating user profile: \(String(describing: error?.localizedDescription))")
+                    print("Error while creating user: \(String(describing: error?.localizedDescription))")
+                    strongSelf.showAlert(message: error!.localizedDescription)
                     return
                 }
-                print("User profile updated!")
+     
+                let user = ChatbotUser(firstName: name, lastName: surname, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: user)
+                strongSelf.navigationController?.dismiss(animated: true)
             }
-            strongSelf.navigationController?.dismiss(animated: true)
         }
+    }
+    
+    private func showAlert(withTitle title: String? = "Oops!", message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Texts.dismiss, style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     // MARK: - Actions
@@ -73,4 +88,19 @@ class RegisterViewController: UIViewController, Storyboarded {
     }
     
 
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            emailAddressTextField.becomeFirstResponder()
+        } else if textField == emailAddressTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
 }

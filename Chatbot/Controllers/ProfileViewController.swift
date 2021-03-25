@@ -49,10 +49,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Methods
     private func validateAuth() {
         if currentUser == nil {
-            let vc = LoginViewController.instantiate()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.isModalInPresentation = true
-            present(nav, animated: false)
+            presentLoginVC(withAnimation: false)
         }
     }
     
@@ -77,10 +74,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    private func presentLoginVC(withAnimation animated: Bool) {
+        let vc = LoginViewController.instantiate()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.isModalInPresentation = true
+        present(nav, animated: animated)
+    }
+    
     // MARK: - Actions
     @IBAction func signOutPressed(_ sender: Any) {
         do {
             try FirebaseAuth.Auth.auth().signOut()
+            presentLoginVC(withAnimation: true)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

@@ -13,6 +13,7 @@
 		110BDB3B26064689004FFA8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110BDB3926064689004FFA8C /* Main.storyboard */; };
 		110BDB3D26064695004FFA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110BDB3C26064695004FFA8C /* Assets.xcassets */; };
 		110BDB4026064695004FFA8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110BDB3E26064695004FFA8C /* LaunchScreen.storyboard */; };
+		113551D8260C5762006D6391 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113551D7260C5762006D6391 /* DatabaseManager.swift */; };
 		117CA09026064C600073AEBA /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CA08F26064C600073AEBA /* ConversationViewController.swift */; };
 		117CA094260654280073AEBA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CA093260654280073AEBA /* LoginViewController.swift */; };
 		117CA098260654340073AEBA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CA097260654340073AEBA /* RegisterViewController.swift */; };
@@ -36,6 +37,7 @@
 		110BDB3C26064695004FFA8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		110BDB3F26064695004FFA8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110BDB4126064695004FFA8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		113551D7260C5762006D6391 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		117CA08F26064C600073AEBA /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		117CA093260654280073AEBA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		117CA097260654340073AEBA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				110BDB3326064689004FFA8C /* AppDelegate.swift */,
 				110BDB3526064689004FFA8C /* SceneDelegate.swift */,
+				113551D7260C5762006D6391 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				117CA098260654340073AEBA /* RegisterViewController.swift in Sources */,
 				117CA09C260654ED0073AEBA /* Constants.swift in Sources */,
 				117CA094260654280073AEBA /* LoginViewController.swift in Sources */,
+				113551D8260C5762006D6391 /* DatabaseManager.swift in Sources */,
 				117CA0CC2609CD130073AEBA /* UIView+.swift in Sources */,
 				110BDB3626064689004FFA8C /* SceneDelegate.swift in Sources */,
 				117CA0C826078CA10073AEBA /* UIButton+.swift in Sources */,
