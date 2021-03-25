@@ -39,6 +39,11 @@ class ProfileViewController: UIViewController {
         setupViews()
         setupLabels()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -81,6 +86,11 @@ class ProfileViewController: UIViewController {
         present(nav, animated: animated)
     }
     
+    private func pushToConversationsVC() {
+        let vc = ConversationViewController.instantiate()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - Actions
     @IBAction func signOutPressed(_ sender: Any) {
         do {
@@ -92,7 +102,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func chatButtonPressed(_ sender: Any) {
-        
+        pushToConversationsVC()
     }
     
     @IBAction func editUserButtonPressed(_ sender: Any) {

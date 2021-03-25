@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Conversation View Controller-->
+        <scene sceneID="q8A-bu-HBx">
+            <objects>
+                <tableViewController storyboardIdentifier="ConversationViewController" id="nnz-Ag-8xs" customClass="ConversationViewController" customModule="Chatbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uAa-Pd-L4d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationTableViewCell" rowHeight="60" id="6In-yq-Umm" customClass="ConversationTableViewCell" customModule="Chatbot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6In-yq-Umm" id="ewC-7J-KnB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatbot" translatesAutoresizingMaskIntoConstraints="NO" id="jPd-Az-DSW">
+                                            <rect key="frame" x="15" y="5" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="8qc-gN-RzJ"/>
+                                                <constraint firstAttribute="width" constant="50" id="eZE-5y-JT3"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYI-r3-pPx">
+                                            <rect key="frame" x="80" y="19.5" width="314" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OYI-r3-pPx" firstAttribute="centerY" secondItem="ewC-7J-KnB" secondAttribute="centerY" id="40s-ER-ksx"/>
+                                        <constraint firstItem="jPd-Az-DSW" firstAttribute="leading" secondItem="ewC-7J-KnB" secondAttribute="leading" constant="15" id="6aD-nq-F1B"/>
+                                        <constraint firstItem="OYI-r3-pPx" firstAttribute="trailing" secondItem="ewC-7J-KnB" secondAttribute="trailingMargin" id="AIw-Yy-I53"/>
+                                        <constraint firstItem="jPd-Az-DSW" firstAttribute="centerY" secondItem="ewC-7J-KnB" secondAttribute="centerY" id="j4C-Pv-YN7"/>
+                                        <constraint firstItem="OYI-r3-pPx" firstAttribute="leading" secondItem="jPd-Az-DSW" secondAttribute="trailing" constant="15" id="vXr-aX-d8n"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conversationImageView" destination="jPd-Az-DSW" id="Ra0-EY-tEq"/>
+                                    <outlet property="conversationTitleLabel" destination="OYI-r3-pPx" id="7Tf-vK-3hj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nnz-Ag-8xs" id="hed-9s-M9Q"/>
+                            <outlet property="delegate" destination="nnz-Ag-8xs" id="HDu-yR-D3T"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="CH9-ZF-dAV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMy-4b-Zb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1879.7101449275365" y="75.669642857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chatbot" width="748" height="684"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
